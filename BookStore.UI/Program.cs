@@ -31,7 +31,6 @@ namespace BookStore.UI
             services.AddDbContext<BookStoreContext>(options => options.UseSqlServer(connString));
 
             // 2. Services (BLL)
-            // QUAN TRỌNG: Phải đăng ký AuthService để Login hoạt động
             services.AddTransient<IAuthService, AuthService>();
             services.AddTransient<IUserService, UserService>();
 
@@ -68,7 +67,6 @@ namespace BookStore.UI
                     // Lấy user đã đăng nhập thành công từ LoginForm
                     CurrentUser = loginForm.LoggedInUser;
 
-                    // Mở MainForm
                     var mainForm = ServiceProvider.GetRequiredService<MainForm>();
                     Application.Run(mainForm);
                 }
